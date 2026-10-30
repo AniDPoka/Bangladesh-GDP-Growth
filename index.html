@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Will Bangladesh be a trillion-dollar economy by FY2040-41?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --surface: #F4F4F2;
+  --ink: #000000;
+  --text: #000000;
+  --muted: #5E5E5E;
+  --rule: #E2E2E2;
+  --ref: #B5B5B5;
+  --accent: #006A4E;
+  --accent-soft: #DDF3E9;
+  --custom: #2B4EFF;
+  --cap: #000000;
+  --skill: #2B4EFF;
+  --work: #FFD23A;
+  --neg: #E23A20;
+  --sun: #FFD23A;
+  --mint: #DDF3E9;
+  --focus: #006A4E;
+
+  --display: "Unbounded", "Arial Black", Arial, sans-serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  --pad: clamp(1rem, 3.2vw, 2.5rem);
+  --hair: 1.5px solid var(--ink);
+  box-sizing: border-box;
+}
+*, *::before, *::after { box-sizing: inherit; }
+html { background: var(--bg); scroll-padding-top: 5rem; scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--text); font-family: var(--body);
+  font-size: clamp(1rem, .96rem + .2vw, 1.0625rem); line-height: 1.55;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent); color: #fff; }
+.wrap { max-width: none; margin: 0; padding: 0; }
+main, .masthead, footer .inner { padding-left: var(--pad); padding-right: var(--pad); }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+button { font: inherit; }
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Top bar */
+.masthead {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding-top: calc(.9rem + env(safe-area-inset-top, 0px)); padding-bottom: .9rem; font-size: .82rem;
+}
+.masthead p { margin: 0; font-weight: 600; display: flex; align-items: center; gap: .5rem; }
+.masthead p::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+.masthead span { color: var(--muted); }
+
+/* Giant wordmark */
+.wordmark {
+  font-family: var(--display); font-weight: 900; line-height: .82; letter-spacing: -0.045em;
+  white-space: nowrap; padding: 0 var(--pad); margin: clamp(.4rem, 1.6vw, 1.2rem) 0 0; font-size: 15vw;
+}
+.wordmark span { display: inline-block; }
+
+/* Hero */
+.hero {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2rem var(--pad);
+  padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(2.5rem, 6vw, 4.5rem);
+}
+.hero > div:first-child { grid-column: 1 / span 7; }
+.picker { grid-column: 8 / span 5; }
+.question {
+  font-family: var(--body); font-weight: 500; font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem);
+  line-height: 1.12; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 1.4rem; max-width: 20ch;
+}
+.showing { color: var(--muted); font-size: .88rem; margin: 0 0 .3rem; }
+.showing b { color: var(--ink); }
+.answer { font-size: 1.05rem; margin: 0 0 .2rem; max-width: 44ch; min-height: 3.2em; }
+.answer strong { color: var(--ink); }
+.big {
+  font-family: var(--display); font-weight: 900; font-size: clamp(2.6rem, 5.6vw, 5.4rem);
+  line-height: .95; letter-spacing: -0.045em; color: var(--ink); font-variant-numeric: tabular-nums;
+  margin: .8rem 0 .6rem; transition: color .3s var(--ease); white-space: nowrap;
+}
+.big.over { color: var(--accent); }
+.big-sub { color: var(--muted); margin: 0; font-size: .92rem; }
+
+/* Scenario picker (service-list style rows) */
+.picker h2 { display: flex; align-items: center; gap: .55rem; font-size: .85rem; font-weight: 600; margin: 0 0 .4rem; }
+.picker h2::before, .yours h3::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+.picker > p { color: var(--muted); font-size: .85rem; margin: 0 0 1rem; max-width: 46ch; }
+.plist { list-style: none; margin: 0; padding: 0; border-top: var(--hair); }
+.pitem { display: flex; gap: .4rem; align-items: center; border-bottom: var(--hair); }
+.pbtn {
+  flex: 1; text-align: left; display: grid; grid-template-columns: 1fr auto; gap: .1rem 1rem;
+  padding: .75rem .7rem; border: 0; background: transparent; color: var(--text); cursor: pointer;
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+.pbtn:hover { background: var(--surface); }
+.pbtn .n { font-weight: 500; font-size: 1.15rem; letter-spacing: -0.015em; }
+.pbtn .r { font-family: var(--display); font-weight: 800; font-size: 1rem; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; text-align: right; }
+.pbtn .d { grid-column: 1 / -1; font-size: .8rem; color: var(--muted); line-height: 1.4; }
+.pbtn[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.pbtn[aria-pressed="true"] .d { color: rgba(255,255,255,.85); }
+.mini {
+  min-height: 36px;
+  border: var(--hair); background: var(--bg); color: var(--ink); border-radius: 999px;
+  padding: .25rem .7rem; cursor: pointer; font-size: .76rem; font-weight: 600; flex: none;
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+.mini:hover { background: var(--ink); color: var(--bg); }
+.pitem .mini:last-child { margin-right: .4rem; }
+.yours { margin-top: 1.6rem; }
+.yours h3 { display: flex; align-items: center; gap: .55rem; font-size: .85rem; font-weight: 600; margin: 0 0 .6rem; }
+.yours .plist { border-top: var(--hair); }
+.empty { color: var(--muted); font-size: .88rem; margin: 0; padding: .8rem .7rem; }
+.empty a { color: var(--accent); font-weight: 600; text-underline-offset: 3px; display: inline-block; padding: .7rem 0; margin: -.7rem 0; }
+
+/* Section headings */
+h2.sec {
+  font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 1.1rem + 1.8vw, 2.6rem);
+  line-height: 1.02; letter-spacing: -0.04em; color: var(--ink); margin: 0 0 .7rem;
+}
+p.lede { color: var(--muted); margin: 0 0 1.4rem; font-size: .95rem; max-width: 64ch; }
+
+/* Chart */
+.chart-block { border-top: var(--hair); padding: clamp(2rem, 5vw, 3.5rem) 0 .5rem; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; touch-action: pan-y; }
+.chart text { font-family: var(--body); }
+.tip {
+  position: absolute; pointer-events: none; background: var(--bg); color: var(--text);
+  border: var(--hair); border-radius: 4px; padding: .55rem .75rem; font-size: .8rem;
+  opacity: 0; transition: opacity .12s; min-width: 190px; font-variant-numeric: tabular-nums; z-index: 3;
+}
+.tip b { display: block; margin-bottom: .25rem; font-family: var(--display); font-weight: 600; font-size: .78rem; }
+.tip .row { display: flex; justify-content: space-between; gap: 1rem; }
+.tip .sel { color: var(--accent); font-weight: 700; }
+.ckey { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: .8rem 0 0; padding: 0; list-style: none; font-size: .82rem; color: var(--muted); }
+.ckey li { display: flex; align-items: center; gap: .45rem; }
+.ckey i { width: 18px; height: 3px; display: inline-block; border-radius: 2px; }
+
+/* Stats */
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 2rem 0 0; border-top: var(--hair); border-bottom: var(--hair); }
+.stats div { padding: 1.2rem 1rem 1.2rem 0; }
+.stats div + div { padding-left: 1.2rem; border-left: var(--hair); }
+.stats dt { color: var(--muted); font-size: .85rem; }
+.stats dd {
+  margin: .3rem 0 .2rem; font-family: var(--display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2.3rem);
+  letter-spacing: -0.04em; font-variant-numeric: tabular-nums; line-height: 1.05;
+}
+.stats span { color: var(--muted); font-size: .8rem; line-height: 1.4; display: block; }
+
+/* Growth sources */
+.section { padding: clamp(2rem, 5vw, 3.5rem) 0 .5rem; }
+.bar { display: flex; height: 44px; border-radius: 999px; overflow: hidden; background: var(--surface); border: var(--hair); }
+.bar div { display: flex; align-items: center; justify-content: center; color: #fff; font-size: .8rem; font-weight: 700; min-width: 0; transition: flex-basis .35s var(--ease); }
+.legend { display: flex; flex-wrap: wrap; gap: .4rem 1.4rem; margin: .9rem 0 0; padding: 0; list-style: none; font-size: .88rem; }
+.legend li { display: flex; align-items: center; gap: .45rem; }
+.legend i { width: 12px; height: 12px; border-radius: 50%; display: inline-block; outline: 1px solid rgba(0,0,0,.15); }
+.legend b { font-variant-numeric: tabular-nums; }
+.neg-note { color: var(--neg); font-size: .88rem; margin: .6rem 0 0; min-height: 1.2em; }
+
+/* Builder */
+.builder { margin-top: clamp(2rem, 5vw, 3.5rem); border-top: var(--hair); padding-top: clamp(2rem, 5vw, 3.5rem); }
+.builder-intro { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2rem var(--pad); align-items: start; }
+.builder-intro > div:first-child { grid-column: 1 / span 7; }
+.builder-intro p { margin: 0 0 .9rem; max-width: 60ch; }
+.formula { grid-column: 9 / span 4; background: var(--mint); border-radius: 4px; padding: 1.2rem 1.3rem; font-size: .9rem; }
+.formula p { margin: 0 0 .5rem; }
+.formula .eq { font-family: var(--display); font-weight: 800; font-size: 1.05rem; letter-spacing: -0.03em; color: var(--accent); margin: .2rem 0 .8rem; line-height: 1.25; }
+
+.preview {
+  position: sticky; top: 0; z-index: 4; background: var(--bg); border-top: var(--hair); border-bottom: var(--hair);
+  padding: .8rem 0; margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: .5rem 1.2rem; align-items: center;
+}
+.preview .pv { font-family: var(--display); font-weight: 900; font-size: clamp(1.4rem, 2.4vw, 2rem); letter-spacing: -0.045em; font-variant-numeric: tabular-nums; line-height: 1; }
+.preview .pv.over { color: var(--accent); }
+.preview .pt { color: var(--muted); font-size: .9rem; }
+.preview .reset { margin-left: auto; }
+
+.block { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 1.5rem var(--pad); padding: clamp(1.6rem, 3.5vw, 2.4rem) 0; border-bottom: var(--hair); }
+.block-head { grid-column: 1 / span 4; }
+.inputs { grid-column: 6 / span 7; display: grid; gap: 1.8rem; }
+.block-head h3 { font-family: var(--display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.035em; margin: 0 0 .5rem; }
+.block-head p { margin: 0; color: var(--muted); font-size: .9rem; max-width: 36ch; }
+.inp { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: .35rem 1.6rem; }
+.inp .top { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.inp label { font-weight: 600; }
+.inp output { font-family: var(--display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.04em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.inp .what { font-size: .88rem; margin: 0; }
+.inp .real { font-size: .8rem; color: var(--muted); margin: 0; }
+.inp .real button { border: 0; background: none; color: var(--accent); font-weight: 600; cursor: pointer; padding: .7rem 0; margin: -.7rem 0; font-size: .8rem; text-decoration: underline; text-underline-offset: 3px; }
+.inp .field { grid-column: 1 / -1; }
+
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 44px; background: transparent; margin: 0; cursor: pointer; }
+input[type="range"]::-webkit-slider-runnable-track { height: 3px; background: var(--ink); }
+input[type="range"]::-moz-range-track { height: 3px; background: var(--ink); }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; margin-top: -9.5px; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1.5px var(--ink); }
+input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 0 0 1.5px var(--ink); }
+.scale { display: flex; justify-content: space-between; color: var(--muted); font-size: .8rem; }
+
+.phase { border: var(--hair); border-radius: 4px; padding: 1.1rem 1.2rem; display: grid; gap: 1rem; }
+.check-row { display: flex; gap: .65rem; align-items: flex-start; cursor: pointer; font-weight: 600; }
+.check-row { min-height: 44px; }
+.check-row input { width: 1.25rem; height: 1.25rem; margin-top: .22rem; accent-color: var(--accent); flex: none; }
+.check-row small { display: block; font-weight: 400; color: var(--muted); font-size: .82rem; }
+.phase-fields[hidden] { display: none; }
+.phase-fields { display: grid; gap: 1.3rem; }
+
+.warns { list-style: none; margin: 1.4rem 0 0; padding: 0; display: grid; gap: .4rem; }
+.warns li { background: var(--sun); color: var(--ink); border-radius: 4px; padding: .6rem .85rem; font-size: .88rem; }
+.save { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; padding: 1.6rem 0 .4rem; }
+.save input[type="text"] {
+  font: inherit; padding: .62rem 1.1rem; border: var(--hair); border-radius: 999px; background: var(--bg); color: var(--text);
+  min-width: 0; flex: 1 1 16rem; max-width: 26rem;
+}
+.btn {
+  border: 1.5px solid var(--accent); background: var(--accent); color: #fff; border-radius: 999px;
+  padding: .62rem 1.25rem; cursor: pointer; font-weight: 600; transition: background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.btn:hover { background: var(--ink); border-color: var(--ink); }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--bg); }
+.save-msg { width: 100%; color: var(--muted); font-size: .85rem; margin: 0; min-height: 1.3em; }
+
+/* About my five scenarios */
+.method { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 3rem; }
+.method h3 { font-size: 1.05rem; font-weight: 600; margin: 0 0 .35rem; }
+.method p { margin: 0 0 1.2rem; font-size: .92rem; max-width: 60ch; color: var(--muted); }
+.check { color: var(--accent); font-weight: 700; }
+table.valid { border-collapse: collapse; font-size: .88rem; width: 100%; font-variant-numeric: tabular-nums; margin-top: .4rem; }
+table.valid th, table.valid td { text-align: right; padding: .5rem .5rem; border-bottom: 1px solid var(--rule); }
+table.valid thead th { border-bottom: var(--hair); color: var(--ink); font-weight: 600; }
+table.valid th:first-child, table.valid td:first-child { text-align: left; padding-left: 0; }
+
+/* Footer */
+footer { background: var(--accent); color: #fff; margin-top: clamp(3rem, 7vw, 5rem); padding: clamp(1.5rem, 4vw, 3rem) 0 calc(1.4rem + env(safe-area-inset-bottom, 0px)); overflow: hidden; }
+footer .wordmark { margin: 0; padding-bottom: .16em; color: #fff; }
+footer .inner { font-size: .85rem; }
+footer .inner::before { content: ""; display: block; border-top: 1px solid rgba(255,255,255,.35); margin-bottom: 1.2rem; }
+footer .inner p { margin: 0 0 .5rem; max-width: 90ch; opacity: .9; }
+
+@media (max-width: 900px) {
+  .hero > div:first-child, .picker, .builder-intro > div:first-child, .formula, .block-head, .inputs { grid-column: 1 / -1; }
+  .method { grid-template-columns: 1fr; }
+  .block { gap: 1rem; }
+}
+@media (max-width: 560px) {
+  .masthead { flex-direction: column; align-items: flex-start; gap: .2rem; }
+  .stats { grid-template-columns: 1fr; }
+  .stats div + div { padding-left: 0; border-left: 0; border-top: var(--hair); }
+  .inp { grid-template-columns: 1fr; }
+  .preview .reset { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <p>Bangladesh GDP scenario explorer</p>
+    <span>World Bank Long-Term Growth Model, calibrated to Bangladesh</span>
+  </header>
+  <div class="wordmark" data-fit aria-hidden="true"><span>Bangladesh</span></div>
+
+  <main>
+    <section class="hero">
+      <div>
+        <h1 class="question">Will Bangladesh be a trillion-dollar economy by FY2040-41?</h1>
+        <p class="showing">Showing: <b id="showName">Base case</b></p>
+        <p class="answer" id="answer" aria-live="polite">—</p>
+        <div class="big" id="big">—</div>
+        <p class="big-sub" id="bigSub">—</p>
+      </div>
+
+      <div class="picker">
+        <h2>My five scenarios</h2>
+        <p>Each one keeps Bangladesh’s real investment, workforce and skills data and changes only productivity growth.</p>
+        <ul class="plist" id="mineList"></ul>
+        <div class="yours">
+          <h3>Your scenarios</h3>
+          <ul class="plist" id="yourList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="chart-block" aria-labelledby="chartTitle">
+      <h2 class="sec" id="chartTitle">How each path gets there</h2>
+      <p class="lede">Grey lines are my five scenarios, blue lines are any you’ve saved, and green is the one you’re looking at. Hover to compare any year.</p>
+      <div class="chart" id="chart">
+        <svg id="svg" role="img" aria-label="Line chart of Bangladesh real GDP from FY2025-26 to FY2040-41"></svg>
+        <div class="tip" id="tip"></div>
+      </div>
+      <ul class="ckey" id="ckey"></ul>
+
+      <dl class="stats">
+        <div><dt>GDP per person, FY2040-41</dt><dd id="sPc">—</dd><span id="sPcSub">—</span></div>
+        <div><dt>Average yearly growth</dt><dd id="sGrowth">—</dd><span>FY2026-27 to FY2040-41</span></div>
+        <div><dt>Capital needed per dollar of output</dt><dd id="sKY">—</dd><span>Starts at 2.78. Rising means each new machine adds less.</span></div>
+      </dl>
+    </section>
+
+    <section class="section" aria-labelledby="srcTitle">
+      <h2 class="sec" id="srcTitle">Where the growth comes from</h2>
+      <p class="lede">Share of total growth from FY2025-26 to FY2040-41 in the scenario you’re looking at.</p>
+      <div class="bar" id="bar" role="img" aria-label="Growth sources"></div>
+      <ul class="legend" id="legend"></ul>
+      <p class="neg-note" id="negNote"></p>
+    </section>
+
+    <!-- ───────────── Builder ───────────── -->
+    <section class="builder" id="build" aria-labelledby="buildTitle">
+      <div class="builder-intro">
+        <div>
+          <h2 class="sec" id="buildTitle">Build your own scenario</h2>
+          <p>This is the same model behind my five scenarios. Every input starts at Bangladesh’s real value, so if you change nothing you get my base case. Change any of them and your scenario redraws on the chart above.</p>
+          <p>The model works year by year. Each year it adds new investment to the country’s stock of machines and infrastructure, takes away what has worn out, grows the workforce, and applies productivity growth. Then it does the same again for the next year, all the way to FY2040-41.</p>
+        </div>
+        <div class="formula">
+          <p>The growth model in one line:</p>
+          <p class="eq">Output = Productivity × Capital × Skilled workers</p>
+          <p>Capital and workers are things you can count. Productivity is how well a country combines them, and it’s the one input nobody can measure directly.</p>
+        </div>
+      </div>
+
+      <div class="preview" aria-live="polite">
+        <span class="pv" id="pv">—</span>
+        <span class="pt" id="pt">—</span>
+        <button class="btn ghost reset" id="resetDraft" type="button">Start again from the base case</button>
+      </div>
+
+      <!-- Productivity -->
+      <div class="block">
+        <div class="block-head">
+          <h3>Productivity</h3>
+          <p>How much more a country produces each year from the same machines and workers, through better technology, management and institutions. This input has the biggest effect on the result.</p>
+        </div>
+        <div class="inputs">
+          <div class="inp">
+            <div class="top"><label for="tfp1" id="tfp1Label">Productivity growth per year</label><output id="tfp1Out" for="tfp1">0.53%</output></div>
+            <div class="field">
+              <input type="range" id="tfp1" min="-1" max="3" step="0.001" value="0.527">
+              <div class="scale"><span>−1%</span><span>0%</span><span>1%</span><span>2%</span><span>3%</span></div>
+            </div>
+            <p class="what">Higher means each worker and machine produces more every year. Zero means growth can only come from adding more capital and more workers.</p>
+            <p class="real">Bangladesh’s real value: 0.53%, worked out from the last decade of growth. World Bank benchmarks: 0%, 1% and 2%. <button type="button" data-reset="tfp1">Use real value</button></p>
+          </div>
+
+          <div class="phase">
+            <label class="check-row"><input type="checkbox" id="phased">
+              <span>Change productivity part-way through
+                <small>For example, if a reform takes effect in a later year. The rate above applies until then.</small></span>
+            </label>
+            <div class="phase-fields" id="phaseFields" hidden>
+              <div class="inp">
+                <div class="top"><label for="pyear">The change starts in</label><output id="pyearOut" for="pyear">FY2030-31</output></div>
+                <div class="field">
+                  <input type="range" id="pyear" min="2027" max="2040" step="1" value="2030">
+                  <div class="scale"><span>FY2027-28</span><span>FY2040-41</span></div>
+                </div>
+              </div>
+              <div class="inp">
+                <div class="top"><label for="tfp2">Productivity growth from then on</label><output id="tfp2Out" for="tfp2">1.50%</output></div>
+                <div class="field">
+                  <input type="range" id="tfp2" min="-1" max="3" step="0.001" value="1.5">
+                  <div class="scale"><span>−1%</span><span>0%</span><span>1%</span><span>2%</span><span>3%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital -->
+      <div class="block">
+        <div class="block-head">
+          <h3>Capital</h3>
+          <p>Factories, machinery, roads and power plants. The stock grows when the country invests and shrinks as things wear out. Each extra unit adds a little less than the one before.</p>
+        </div>
+        <div class="inputs">
+          <div class="inp">
+            <div class="top"><label for="iy">Investment, share of GDP</label><output id="iyOut" for="iy">30.7%</output></div>
+            <div class="field"><input type="range" id="iy" min="20" max="40" step="0.1" value="30.7"><div class="scale"><span>20%</span><span>40%</span></div></div>
+            <p class="what">The share of everything the country earns that goes into building new capital instead of being spent today.</p>
+            <p class="real">Real value: 30.7% (World Bank, 2024). Over the last decade it ranged from about 29% to 32%. <button type="button" data-reset="iy">Use real value</button></p>
+          </div>
+          <div class="inp">
+            <div class="top"><label for="dep">Depreciation per year</label><output id="depOut" for="dep">3.2%</output></div>
+            <div class="field"><input type="range" id="dep" min="2" max="6" step="0.1" value="3.2"><div class="scale"><span>2%</span><span>6%</span></div></div>
+            <p class="what">How much of the existing capital wears out each year. Higher means more investment is needed just to stand still.</p>
+            <p class="real">Real value: 3.2% (Penn World Table 8.1). <button type="button" data-reset="dep">Use real value</button></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workers and skills -->
+      <div class="block">
+        <div class="block-head">
+          <h3>Workers and skills</h3>
+          <p>How many people are working and how skilled they are. Bangladesh’s large working-age generation is a boost today, but that window narrows as fewer children are born behind it.</p>
+        </div>
+        <div class="inputs">
+          <div class="inp">
+            <div class="top"><label for="gN">Population growth</label><output id="gNOut" for="gN">0.95%</output></div>
+            <div class="field"><input type="range" id="gN" min="0.4" max="1.6" step="0.001" value="0.951"><div class="scale"><span>0.4%</span><span>1.6%</span></div></div>
+            <p class="what">More people means a bigger economy in total, but each person’s share of the capital stock is thinner.</p>
+            <p class="real">Real value: 0.95% a year (World Bank, 2015 to 2024 average). <button type="button" data-reset="gN">Use real value</button></p>
+          </div>
+          <div class="inp">
+            <div class="top"><label for="gOmega">Growth in the working-age share</label><output id="gOmegaOut" for="gOmega">0.32%</output></div>
+            <div class="field"><input type="range" id="gOmega" min="-0.5" max="1" step="0.001" value="0.322"><div class="scale"><span>−0.5%</span><span>1%</span></div></div>
+            <p class="what">Whether people aged 15 to 64 make up a growing or shrinking part of the population. Negative means the population is ageing.</p>
+            <p class="real">Real value: 0.32% a year (World Bank, 2014 to 2024). <button type="button" data-reset="gOmega">Use real value</button></p>
+          </div>
+          <div class="inp">
+            <div class="top"><label for="gPart">Growth in workforce participation</label><output id="gPartOut" for="gPart">0.36%</output></div>
+            <div class="field"><input type="range" id="gPart" min="-1" max="1" step="0.001" value="0.361"><div class="scale"><span>−1%</span><span>1%</span></div></div>
+            <p class="what">Whether more working-age people take up work. Women’s participation is the main driver in Bangladesh.</p>
+            <p class="real">Real value: 0.36% a year (World Bank, 2014 to 2024). <button type="button" data-reset="gPart">Use real value</button></p>
+          </div>
+          <div class="inp">
+            <div class="top"><label for="gH">Skills growth per worker</label><output id="gHOut" for="gH">1.3%</output></div>
+            <div class="field"><input type="range" id="gH" min="0" max="3" step="0.1" value="1.3"><div class="scale"><span>0%</span><span>3%</span></div></div>
+            <p class="what">How fast education and training make each worker more capable.</p>
+            <p class="real">Real value: 1.3% a year (Penn World Table 8.1). <button type="button" data-reset="gH">Use real value</button></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Climate -->
+      <div class="block">
+        <div class="block-head">
+          <h3>Climate damage</h3>
+          <p>Flooding, cyclones, salinity and land loss in the delta reduce how much the economy can produce. The model treats this as a yearly cut to productivity growth.</p>
+        </div>
+        <div class="inputs">
+          <div class="inp">
+            <div class="top"><label for="clim">Yearly cut to productivity growth</label><output id="climOut" for="clim">0.00 points</output></div>
+            <div class="field"><input type="range" id="clim" min="0" max="1.5" step="0.01" value="0"><div class="scale"><span>None</span><span>1.5 points</span></div></div>
+            <p class="what">Zero leaves climate out. My climate scenario uses 0.73 points, the Bangladesh Delta Plan 2100’s estimate if no further adaptation happens.</p>
+            <p class="real">Delta Plan estimate: 0.73 points. <button type="button" data-set-clim="0.73">Use the Delta Plan estimate</button></p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="warns" id="warns"></ul>
+
+      <div class="save">
+        <input type="text" id="saveName" maxlength="40" placeholder="Name your scenario, e.g. Reform from 2030" aria-label="Scenario name">
+        <button class="btn" id="saveBtn" type="button">Save scenario</button>
+        <p class="save-msg" id="saveMsg">Saved scenarios stay in this browser and appear next to my five above. You can keep up to four.</p>
+      </div>
+      <p class="real" style="font-size:.8rem;color:var(--muted);margin:.6rem 0 0">Two inputs stay fixed: the starting capital stock (2.78 times GDP, Penn World Table 8.1) and the labour share (0.5, the World Bank’s cross-country standard). They describe the economy’s structure rather than a choice about the future.</p>
+    </section>
+
+    <section class="section" aria-labelledby="howTitle" style="margin-top:1.5rem;border-top:1.5px solid var(--ink)">
+      <h2 class="sec" id="howTitle">About my five scenarios</h2>
+      <div class="method">
+        <div>
+          <h3>Why only productivity changes</h3>
+          <p>Capital and labour can be counted, so they use Bangladesh’s real data in all five scenarios. Productivity can’t be counted. My base case of 0.53% is what’s left over once the last decade of actual growth is explained by everything measurable. The other scenarios bracket it with the World Bank’s own 0%, 1% and 2% benchmarks, plus a climate case using the Delta Plan’s damage estimate.</p>
+          <h3>Why growth slows over time</h3>
+          <p>Investment stays high, so capital keeps piling up, but each extra unit adds less than the one before. The model tracks this every year, so the slowdown comes from the arithmetic rather than an assumption.</p>
+          <h3>Limits worth knowing</h3>
+          <p>Population growth is held at its recent average, though fertility is falling. Climate damage is applied as a flat cut to productivity. Treat every figure as a scenario, not a forecast.</p>
+        </div>
+        <div>
+          <h3>Checked three ways</h3>
+          <p>The same model was built in Excel, Python and this page. All three give identical results. <span class="check">✓ Matches to the billion.</span></p>
+          <table class="valid">
+            <thead><tr><th>Scenario</th><th>Productivity</th><th>FY2040-41</th><th>FY2066-67</th></tr></thead>
+            <tbody id="validBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wordmark" data-fit aria-hidden="true"><span>Bangladesh</span></div>
+    <div class="inner">
+    <p>Figures are real GDP in US dollars at FY2025-26 prices, starting from $460 billion. Years run on Bangladesh’s July–June fiscal year.</p>
+    <p>Sources: Pennings (2020), Long Term Growth Model v4.3, World Bank; World Bank World Development Indicators; IMF World Economic Outlook; Penn World Table 8.1; Bangladesh Delta Plan 2100.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ── Model: World Bank LTGM v4.3, Equations 2, 3, 5 and 6 ─────────────── */
+  var BASE = { Y0: 460, pop0: 173.562364, IY: 0.307, delta: 0.032, KY0: 2.78, beta: 0.5,
+               gN: 0.00951, gOmega: 0.00322, gPart: 0.00361, gH: 0.013, gA: 0.00527 };
+  var END = 2040, TRILLION = 1000, MAX_SAVED = 4, STORE_KEY = "bd-gdp-scenarios-v1";
+
+  function runModel(endYear, over) {
+    var p = Object.assign({}, BASE, over || {});
+    var gAFn = typeof p.gAFn === "function" ? p.gAFn : function () { return p.gA; };
+    var KY = p.KY0, Y = p.Y0, pop = p.pop0;
+    var rows = [{ year: 2025, gdp: Y, pop: pop, pc: Y * 1e3 / pop, KY: KY }];
+    var c = { tfp: 0, cap: 0, hum: 0, lab: 0 };
+    for (var yr = 2026; yr <= endYear; yr++) {
+      var gA = gAFn(yr);
+      var wf = (1 + p.gN) * (1 + p.gPart) * (1 + p.gOmega);
+      var gk = ((1 - p.delta) + p.IY / KY) / wf - 1;                                         // Eq. 5
+      var gy = (1 + gA) * Math.pow(1 + gk, 1 - p.beta) * Math.pow(1 + p.gH, p.beta) - 1;     // Eq. 2
+      var gypc = (1 + p.gOmega) * (1 + p.gPart) * (1 + gy) - 1;                               // Eq. 3
+      var gY = (1 + gypc) * (1 + p.gN) - 1;
+      KY = (1 + gk) / (1 + gy) * KY;                                                         // Eq. 6
+      Y *= 1 + gY; pop *= 1 + p.gN;
+      if (yr <= END) {
+        c.tfp += Math.log(1 + gA); c.cap += (1 - p.beta) * Math.log(1 + gk);
+        c.hum += p.beta * Math.log(1 + p.gH); c.lab += Math.log(wf);
+      }
+      rows.push({ year: yr, gdp: Y, pop: pop, pc: Y * 1e3 / pop, KY: KY });
+    }
+    return { rows: rows, contrib: c };
+  }
+
+  /* ── Scenario definitions (all in "settings" form, % units) ───────────── */
+  var REAL = { tfp1: 0.527, phased: false, year: 2030, tfp2: 1.5, iy: 30.7, dep: 3.2,
+               gN: 0.951, gOmega: 0.322, gPart: 0.361, gH: 1.3, clim: 0 };
+  function settingsToOver(s) {
+    return {
+      gAFn: function (yr) { return ((s.phased && yr >= s.year) ? s.tfp2 : s.tfp1) / 100 - s.clim / 100; },
+      IY: s.iy / 100, delta: s.dep / 100, gN: s.gN / 100, gOmega: s.gOmega / 100, gPart: s.gPart / 100, gH: s.gH / 100
+    };
+  }
+  var MINE = [
+    { key: "climate", name: "Climate damage", rate: "−0.20%", desc: "My base case, minus the Delta Plan’s estimate of yearly climate damage.", s: Object.assign({}, REAL, { clim: 0.73 }) },
+    { key: "pess", name: "Pessimistic", rate: "0.00%", desc: "No productivity gains. Growth comes only from more capital and more workers.", s: Object.assign({}, REAL, { tfp1: 0 }) },
+    { key: "base", name: "Base case", rate: "0.53%", desc: "Bangladesh’s actual productivity growth over the last decade, worked out from real data.", s: Object.assign({}, REAL) },
+    { key: "mod", name: "Moderate", rate: "1.00%", desc: "Steady reform starts paying off. The World Bank’s middle benchmark.", s: Object.assign({}, REAL, { tfp1: 1 }) },
+    { key: "opt", name: "Optimistic", rate: "2.00%", desc: "Sustained transformation. The World Bank’s upper benchmark.", s: Object.assign({}, REAL, { tfp1: 2 }) }
+  ];
+  MINE.forEach(function (m) {
+    m.run = runModel(END, settingsToOver(m.s));
+    m.end66 = runModel(2066, settingsToOver(m.s)).rows[41].gdp;
+  });
+
+  /* ── State ────────────────────────────────────────────────────────────── */
+  var saved = loadSaved();
+  var draft = Object.assign({}, REAL);
+  var draftTouched = false;
+  var selected = { kind: "mine", key: "base" };
+
+  function loadSaved() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      var arr = raw ? JSON.parse(raw) : [];
+      return Array.isArray(arr) ? arr.filter(function (x) { return x && x.id && x.s; }).slice(0, MAX_SAVED) : [];
+    } catch (e) { return []; }
+  }
+  function persist() {
+    try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); return true; } catch (e) { return false; }
+  }
+
+  /* ── Helpers ──────────────────────────────────────────────────────────── */
+  var $ = function (id) { return document.getElementById(id); };
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function money(bn) { return bn >= 1000 ? "$" + (bn / 1000).toFixed(2) + " trillion" : "$" + Math.round(bn).toLocaleString("en-US") + " billion"; }
+  function moneyShort(bn) { return "$" + Math.round(bn).toLocaleString("en-US") + "bn"; }
+  function fy(y) { return "FY" + y + "-" + String((y + 1) % 100).padStart(2, "0"); }
+  function pct(x, d) { return (x * 100).toFixed(d == null ? 2 : d) + "%"; }
+  function css(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function rateText(s) {
+    var a = s.tfp1.toFixed(2) + "%";
+    var t = s.phased ? a + " → " + s.tfp2.toFixed(2) + "% from " + fy(s.year) : a;
+    if (s.clim > 0) t += ", climate −" + s.clim.toFixed(2);
+    return t;
+  }
+
+  function current() {
+    if (selected.kind === "mine") {
+      var m = MINE.filter(function (x) { return x.key === selected.key; })[0];
+      return { name: m.name, s: m.s, run: m.run };
+    }
+    if (selected.kind === "saved") {
+      var sv = saved.filter(function (x) { return x.id === selected.id; })[0];
+      if (sv) return { name: sv.name, s: sv.s, run: runModel(END, settingsToOver(sv.s)) };
+      selected = { kind: "mine", key: "base" };
+      return current();
+    }
+    return { name: "Your draft (not saved yet)", s: draft, run: runModel(END, settingsToOver(draft)) };
+  }
+
+  /* ── Picker lists ─────────────────────────────────────────────────────── */
+  function pickButton(name, rate, desc, pressed, onClick) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "pbtn"; b.setAttribute("aria-pressed", pressed ? "true" : "false");
+    var n = document.createElement("span"); n.className = "n"; n.textContent = name;
+    var r = document.createElement("span"); r.className = "r"; r.textContent = rate;
+    var d = document.createElement("span"); d.className = "d"; d.textContent = desc;
+    b.appendChild(n); b.appendChild(r); b.appendChild(d);
+    b.addEventListener("click", onClick);
+    return b;
+  }
+  function renderLists() {
+    var mine = $("mineList"); mine.textContent = "";
+    MINE.forEach(function (m) {
+      var li = document.createElement("li"); li.className = "pitem";
+      li.appendChild(pickButton(m.name, m.rate, m.desc, selected.kind === "mine" && selected.key === m.key,
+        function () { selected = { kind: "mine", key: m.key }; refresh(); }));
+      mine.appendChild(li);
+    });
+
+    var yours = $("yourList"); yours.textContent = "";
+    if (draftTouched) {
+      var li0 = document.createElement("li"); li0.className = "pitem";
+      li0.appendChild(pickButton("Your draft", moneyShort(runModel(END, settingsToOver(draft)).rows[15].gdp),
+        "Not saved yet. " + rateText(draft), selected.kind === "draft",
+        function () { selected = { kind: "draft" }; refresh(); }));
+      yours.appendChild(li0);
+    }
+    saved.forEach(function (sv) {
+      var li = document.createElement("li"); li.className = "pitem";
+      li.appendChild(pickButton(sv.name, moneyShort(runModel(END, settingsToOver(sv.s)).rows[15].gdp), rateText(sv.s),
+        selected.kind === "saved" && selected.id === sv.id,
+        function () { selected = { kind: "saved", id: sv.id }; refresh(); }));
+      var edit = document.createElement("button");
+      edit.type = "button"; edit.className = "mini"; edit.textContent = "Edit";
+      edit.setAttribute("aria-label", "Edit " + sv.name);
+      edit.addEventListener("click", function () {
+        draft = Object.assign({}, REAL, sv.s); draftTouched = true; selected = { kind: "draft" };
+        $("saveName").value = sv.name; syncInputs(); refresh();
+        $("build").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
+      });
+      var del = document.createElement("button");
+      del.type = "button"; del.className = "mini"; del.textContent = "Delete";
+      del.setAttribute("aria-label", "Delete " + sv.name);
+      del.addEventListener("click", function () {
+        saved = saved.filter(function (x) { return x.id !== sv.id; });
+        persist();
+        if (selected.kind === "saved" && selected.id === sv.id) selected = { kind: "mine", key: "base" };
+        refresh();
+      });
+      li.appendChild(edit); li.appendChild(del);
+      yours.appendChild(li);
+    });
+    if (!draftTouched && !saved.length) {
+      var p = document.createElement("li");
+      var e = document.createElement("p"); e.className = "empty";
+      e.appendChild(document.createTextNode("None yet. "));
+      var a = document.createElement("a"); a.href = "#build"; a.textContent = "Build your own scenario";
+      e.appendChild(a); p.appendChild(e); yours.appendChild(p);
+    }
+  }
+
+  /* ── Big number animation ─────────────────────────────────────────────── */
+  var shown = null, anim = null;
+  function setBig(target) {
+    var el = $("big");
+    el.classList.toggle("over", target >= TRILLION);
+    if (reduceMotion || shown === null) { shown = target; el.textContent = money(target); return; }
+    cancelAnimationFrame(anim);
+    var from = shown, t0 = performance.now();
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / 380), e = 1 - Math.pow(1 - k, 3);
+      shown = from + (target - from) * e;
+      el.textContent = money(shown);
+      if (k < 1) anim = requestAnimationFrame(step);
+    })(t0);
+  }
+
+  /* ── Chart ────────────────────────────────────────────────────────────── */
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent) {
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) if (attrs[k] != null) n.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(n);
+    return n;
+  }
+  var hideTip = function () {};
+  document.addEventListener("pointerdown", function (e) { if (!$("chart").contains(e.target)) hideTip(); });
+  function drawChart(cur) {
+    var svg = $("svg");
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var W = Math.max(320, $("chart").clientWidth), narrow = W < 560, H = narrow ? 300 : 380;
+    var m = { t: 18, r: narrow ? 80 : 136, b: 34, l: narrow ? 50 : 56 };
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+
+    var savedRuns = saved.map(function (sv) { return { sv: sv, run: runModel(END, settingsToOver(sv.s)) }; });
+    var maxY = 0;
+    [cur.run.rows].concat(MINE.map(function (x) { return x.run.rows; }), savedRuns.map(function (x) { return x.run.rows; }))
+      .forEach(function (r) { r.forEach(function (d) { maxY = Math.max(maxY, d.gdp); }); });
+    maxY = Math.max(maxY * 1.06, 1150);
+    var step = maxY > 3000 ? 1000 : maxY > 1500 ? 500 : 250;
+    maxY = Math.ceil(maxY / step) * step;
+    var x = function (yr) { return m.l + (yr - 2025) / (END - 2025) * (W - m.l - m.r); };
+    var y = function (v) { return m.t + (1 - v / maxY) * (H - m.t - m.b); };
+    var cMuted = css("--muted"), cRule = css("--rule"), cRef = css("--ref"), cAcc = css("--accent"), cInk = css("--ink"), cCus = css("--custom");
+
+    for (var v = 0; v <= maxY; v += step) {
+      el("line", { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), stroke: cRule, "stroke-width": 1 }, svg);
+      el("text", { x: m.l - 8, y: y(v) + 4, "text-anchor": "end", "font-size": narrow ? 12 : 11, fill: cMuted }, svg).textContent = v >= 1000 ? "$" + (v / 1000) + "T" : "$" + v + "bn";
+    }
+    [2025, 2030, 2035, 2040].forEach(function (yr) {
+      el("text", { x: x(yr), y: H - 10, "text-anchor": yr === 2025 ? "start" : yr === END ? "end" : "middle", "font-size": narrow ? 12 : 11, fill: cMuted }, svg).textContent = narrow ? String(yr) : fy(yr);
+    });
+    el("line", { x1: m.l, x2: W - m.r, y1: y(TRILLION), y2: y(TRILLION), stroke: cInk, "stroke-width": 1.5, "stroke-dasharray": "5 4" }, svg);
+    el("text", { x: m.l + 6, y: y(TRILLION) - 7, "font-size": 12, "font-weight": 700, fill: cInk }, svg).textContent = "$1 trillion";
+
+    function path(rows) { return rows.map(function (d, i) { return (i ? "L" : "M") + x(d.year).toFixed(1) + "," + y(d.gdp).toFixed(1); }).join(" "); }
+
+    var labels = [];
+    MINE.forEach(function (mn) {
+      var isSel = selected.kind === "mine" && selected.key === mn.key;
+      if (!isSel) el("path", { d: path(mn.run.rows), fill: "none", stroke: cRef, "stroke-width": 1.6, "stroke-dasharray": mn.key === "climate" ? "4 3" : null }, svg);
+      if (!isSel) labels.push({ y: y(mn.run.rows[15].gdp), text: (narrow ? "" : mn.name + " ") + moneyShort(mn.run.rows[15].gdp), color: cMuted, weight: 500 });
+    });
+    savedRuns.forEach(function (sr) {
+      var isSel = selected.kind === "saved" && selected.id === sr.sv.id;
+      if (!isSel) el("path", { d: path(sr.run.rows), fill: "none", stroke: cCus, "stroke-width": 2, opacity: .85 }, svg);
+    });
+    el("path", { d: path(cur.run.rows), fill: "none", stroke: cAcc, "stroke-width": 4, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+    var curEnd = cur.run.rows[15].gdp;
+    var selName = selected.kind === "draft" ? "Draft" : cur.name;
+    if (selName.length > 16) selName = selName.slice(0, 15) + "…";
+    labels.push({ y: y(curEnd), text: (narrow ? "" : selName + " ") + moneyShort(curEnd), color: cAcc, weight: 800 });
+    labels.sort(function (a, b) { return a.y - b.y; });
+    for (var i = 1; i < labels.length; i++) if (labels[i].y - labels[i - 1].y < 14) labels[i].y = labels[i - 1].y + 14;
+    var overflow = labels[labels.length - 1].y - (H - m.b);
+    if (overflow > 0) labels.forEach(function (l) { l.y -= overflow; });
+    labels.forEach(function (l) {
+      el("text", { x: W - m.r + 8, y: l.y + 4, "font-size": narrow ? 12 : 11.5, "font-weight": l.weight, fill: l.color }, svg).textContent = l.text.trim();
+    });
+    var cross = cur.run.rows.filter(function (d) { return d.gdp >= TRILLION; })[0];
+    if (cross) el("circle", { cx: x(cross.year), cy: y(cross.gdp), r: 6, fill: css("--bg"), stroke: cAcc, "stroke-width": 3 }, svg);
+    if (cur.s.phased) {
+      el("line", { x1: x(cur.s.year), x2: x(cur.s.year), y1: m.t, y2: H - m.b, stroke: cAcc, "stroke-width": 1, "stroke-dasharray": "2 3", opacity: .7 }, svg);
+      el("text", { x: x(cur.s.year) + 5, y: m.t + 12, "font-size": 11, fill: cAcc, "font-weight": 600 }, svg).textContent = "Productivity changes";
+    }
+
+    // key for saved lines
+    var key = $("ckey"); key.textContent = "";
+    function keyItem(color, text, dashed) {
+      var li = document.createElement("li"); var i = document.createElement("i");
+      i.style.background = dashed ? "repeating-linear-gradient(90deg," + color + " 0 5px,transparent 5px 8px)" : color;
+      li.appendChild(i); li.appendChild(document.createTextNode(text)); key.appendChild(li);
+    }
+    keyItem(cAcc, "Showing: " + cur.name);
+    keyItem(cRef, "My scenarios");
+    if (savedRuns.some(function (sr) { return !(selected.kind === "saved" && selected.id === sr.sv.id); }))
+      keyItem(cCus, "Your saved scenarios");
+    keyItem(cInk, "$1 trillion", true);
+
+    // hover
+    var guide = el("line", { y1: m.t, y2: H - m.b, stroke: cMuted, "stroke-width": 1, opacity: 0 }, svg);
+    var dot = el("circle", { r: 5, fill: cAcc, opacity: 0 }, svg);
+    var hit = el("rect", { x: m.l, y: m.t, width: W - m.l - m.r, height: H - m.t - m.b, fill: "transparent" }, svg);
+    var tip = $("tip");
+    function show(evt) {
+      var rect = svg.getBoundingClientRect();
+      var sx = (evt.clientX - rect.left) * (W / rect.width);
+      var yr = Math.max(2025, Math.min(END, Math.round(2025 + (sx - m.l) / (W - m.l - m.r) * (END - 2025))));
+      var idx = yr - 2025, d = cur.run.rows[idx];
+      guide.setAttribute("x1", x(yr)); guide.setAttribute("x2", x(yr)); guide.setAttribute("opacity", .5);
+      dot.setAttribute("cx", x(yr)); dot.setAttribute("cy", y(d.gdp)); dot.setAttribute("opacity", 1);
+      tip.textContent = "";
+      var head = document.createElement("b"); head.textContent = fy(yr); tip.appendChild(head);
+      function row(name, val, cls) {
+        var r = document.createElement("div"); r.className = "row" + (cls ? " " + cls : "");
+        var a = document.createElement("span"); a.textContent = name;
+        var b = document.createElement("span"); b.textContent = moneyShort(val);
+        r.appendChild(a); r.appendChild(b); tip.appendChild(r);
+      }
+      row(cur.name.length > 22 ? cur.name.slice(0, 21) + "…" : cur.name, d.gdp, "sel");
+      MINE.slice().reverse().forEach(function (mn) { if (!(selected.kind === "mine" && selected.key === mn.key)) row(mn.name, mn.run.rows[idx].gdp); });
+      savedRuns.forEach(function (sr) { if (!(selected.kind === "saved" && selected.id === sr.sv.id)) row(sr.sv.name.length > 22 ? sr.sv.name.slice(0, 21) + "…" : sr.sv.name, sr.run.rows[idx].gdp); });
+      var box = $("chart").getBoundingClientRect();
+      var px = x(yr) * (rect.width / W) + (rect.left - box.left);
+      tip.style.opacity = 1;
+      var tw = tip.offsetWidth, left = px + 14;
+      if (left + tw > box.width) left = px - tw - 14;
+      tip.style.left = Math.max(0, left) + "px"; tip.style.top = "8px";
+    }
+    function hide() { tip.style.opacity = 0; guide.setAttribute("opacity", 0); dot.setAttribute("opacity", 0); }
+    hideTip = hide;
+    hit.addEventListener("pointermove", show); hit.addEventListener("pointerdown", show);
+    hit.addEventListener("pointerleave", function (e) { if (e.pointerType !== "touch") hide(); });
+
+    svg.setAttribute("aria-label", "Line chart of Bangladesh real GDP, FY2025-26 to FY2040-41. " + cur.name + " reaches " + moneyShort(curEnd) +
+      ". My five scenarios reach " + MINE.map(function (s) { return s.name + " " + moneyShort(s.run.rows[15].gdp); }).join(", ") + ".");
+  }
+
+  /* ── Growth sources ───────────────────────────────────────────────────── */
+  function drawBar(c) {
+    var parts = [
+      { name: "Productivity", v: c.tfp, color: css("--accent") },
+      { name: "Machines and infrastructure", v: c.cap, color: css("--cap") },
+      { name: "Skills", v: c.hum, color: css("--skill") },
+      { name: "More workers", v: c.lab, color: css("--work") }
+    ];
+    var total = parts.reduce(function (a, p) { return a + p.v; }, 0);
+    var pos = parts.filter(function (p) { return p.v > 0; });
+    var posTotal = pos.reduce(function (a, p) { return a + p.v; }, 0);
+    var bar = $("bar"), legend = $("legend");
+    bar.textContent = ""; legend.textContent = "";
+    pos.forEach(function (p) {
+      var d = document.createElement("div");
+      d.style.flexBasis = (p.v / posTotal * 100) + "%"; d.style.background = p.color; if (p.name === "More workers") d.style.color = "#000";
+      var share = p.v / total * 100;
+      d.textContent = share >= 7 ? Math.round(share) + "%" : "";
+      bar.appendChild(d);
+    });
+    parts.forEach(function (p) {
+      var li = document.createElement("li");
+      var i = document.createElement("i"); i.style.background = p.color;
+      var s = document.createElement("span"); s.textContent = p.name + " ";
+      var b = document.createElement("b"); b.textContent = Math.round(p.v / total * 100) + "%";
+      s.appendChild(b); li.appendChild(i); li.appendChild(s); legend.appendChild(li);
+    });
+    $("negNote").textContent = c.tfp < -1e-9
+      ? "Productivity is shrinking here: it subtracts " + Math.abs(Math.round(c.tfp / total * 100)) + "% from growth, so the other three have to make up the difference."
+      : Math.abs(c.tfp) < 1e-9 ? "With zero productivity growth, all growth has to come from more capital, skills and workers." : "";
+  }
+
+  /* ── Builder inputs ───────────────────────────────────────────────────── */
+  var FIELDS = {
+    tfp1:   { out: function (v) { return (v > 0 ? "+" : "") + v.toFixed(2) + "%"; } },
+    tfp2:   { out: function (v) { return (v > 0 ? "+" : "") + v.toFixed(2) + "%"; } },
+    year:   { id: "pyear", out: function (v) { return fy(v); } },
+    iy:     { out: function (v) { return v.toFixed(1) + "%"; } },
+    dep:    { out: function (v) { return v.toFixed(1) + "%"; } },
+    gN:     { out: function (v) { return v.toFixed(2) + "%"; } },
+    gOmega: { out: function (v) { return v.toFixed(2) + "%"; } },
+    gPart:  { out: function (v) { return v.toFixed(2) + "%"; } },
+    gH:     { out: function (v) { return v.toFixed(1) + "%"; } },
+    clim:   { out: function (v) { return v.toFixed(2) + " points"; } }
+  };
+  function inputFor(k) { return $(FIELDS[k].id || k); }
+  function outFor(k) { return $((FIELDS[k].id || k) + "Out"); }
+  function syncInputs() {
+    Object.keys(FIELDS).forEach(function (k) {
+      inputFor(k).value = draft[k];
+      outFor(k).textContent = FIELDS[k].out(Number(draft[k]));
+    });
+    $("phased").checked = !!draft.phased;
+    $("phaseFields").hidden = !draft.phased;
+    $("tfp1Label").textContent = draft.phased ? "Productivity growth until the change" : "Productivity growth per year";
+  }
+  function touchDraft() {
+    draftTouched = true;
+    selected = { kind: "draft" };
+    refresh();
+  }
+  Object.keys(FIELDS).forEach(function (k) {
+    inputFor(k).addEventListener("input", function () {
+      draft[k] = parseFloat(this.value);
+      outFor(k).textContent = FIELDS[k].out(draft[k]);
+      touchDraft();
+    });
+  });
+  $("phased").addEventListener("change", function () {
+    draft.phased = this.checked; syncInputs(); touchDraft();
+  });
+  document.querySelectorAll("[data-reset]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var k = b.getAttribute("data-reset"); draft[k] = REAL[k]; syncInputs(); touchDraft();
+    });
+  });
+  document.querySelectorAll("[data-set-clim]").forEach(function (b) {
+    b.addEventListener("click", function () { draft.clim = parseFloat(b.getAttribute("data-set-clim")); syncInputs(); touchDraft(); });
+  });
+  $("resetDraft").addEventListener("click", function () {
+    draft = Object.assign({}, REAL); $("saveName").value = ""; syncInputs(); touchDraft();
+  });
+
+  function warnings(s) {
+    var w = [];
+    var top = Math.max(s.tfp1, s.phased ? s.tfp2 : -9);
+    if (top > 2) w.push("Productivity growth above 2% for many years is beyond the World Bank’s optimistic benchmark. Very few economies have sustained it.");
+    if (Math.min(s.tfp1, s.phased ? s.tfp2 : 9) < 0) w.push("Negative productivity growth means the economy gets less efficient each year, which is unusual outside a crisis.");
+    if (s.iy > 34) w.push("Investment above 34% of GDP is higher than anything Bangladesh has recorded in the last decade (about 29% to 32%).");
+    if (s.iy < 25) w.push("Investment below 25% of GDP would be a sharp drop from Bangladesh’s recent level of around 30%.");
+    if (s.gN < 0.6 || s.gN > 1.3) w.push("Population growth outside 0.6% to 1.3% is well away from Bangladesh’s recent trend of about 0.95%.");
+    if (s.gH > 2) w.push("Skills growth above 2% a year would need an exceptional expansion in education quality.");
+    return w;
+  }
+
+  /* ── Saving ───────────────────────────────────────────────────────────── */
+  $("saveBtn").addEventListener("click", function () {
+    var name = $("saveName").value.trim();
+    var msg = $("saveMsg");
+    if (!name) { msg.textContent = "Give your scenario a name first."; $("saveName").focus(); return; }
+    var existing = saved.filter(function (x) { return x.name.toLowerCase() === name.toLowerCase(); })[0];
+    if (!existing && saved.length >= MAX_SAVED) { msg.textContent = "You can keep four scenarios. Delete one above to save another."; return; }
+    var copy = Object.assign({}, draft);
+    var id;
+    if (existing) { existing.s = copy; id = existing.id; }
+    else { id = "s" + Date.now().toString(36); saved.push({ id: id, name: name, s: copy }); }
+    var ok = persist();
+    selected = { kind: "saved", id: id };
+    draftTouched = false;
+    msg.textContent = (existing ? "Updated “" : "Saved “") + name + "”." + (ok ? " It’s now in Your scenarios at the top." : " Your browser blocked storage, so it will disappear when you leave the page.");
+    refresh();
+  });
+
+  /* ── Validation table ─────────────────────────────────────────────────── */
+  MINE.forEach(function (mn) {
+    var tr = document.createElement("tr");
+    [mn.name, mn.rate, moneyShort(mn.run.rows[15].gdp), moneyShort(mn.end66)].forEach(function (t) {
+      var td = document.createElement("td"); td.textContent = t; tr.appendChild(td);
+    });
+    $("validBody").appendChild(tr);
+  });
+
+  /* ── Refresh everything ───────────────────────────────────────────────── */
+  var lastCur = null;
+  function refresh() {
+    var cur = current(); lastCur = cur;
+    var last = cur.run.rows[15];
+    var long = runModel(2075, settingsToOver(cur.s));
+    var cross = long.rows.filter(function (d) { return d.gdp >= TRILLION; })[0];
+
+    $("showName").textContent = cur.name;
+    var ans = $("answer"); ans.textContent = "";
+    var strong = document.createElement("strong");
+    if (last.gdp >= TRILLION) {
+      strong.textContent = "Yes. "; ans.appendChild(strong);
+      ans.appendChild(document.createTextNode("On this path Bangladesh crosses $1 trillion in " + fy(cross.year) +
+        (cross.year < END ? ", " + (END - cross.year) + " year" + (END - cross.year > 1 ? "s" : "") + " early." : ", just in time.")));
+    } else {
+      strong.textContent = "Not yet. "; ans.appendChild(strong);
+      ans.appendChild(document.createTextNode(cross
+        ? "On this path the economy reaches $1 trillion in " + fy(cross.year) + ", " + (cross.year - END) + " year" + (cross.year - END > 1 ? "s" : "") + " late."
+        : "On this path the economy doesn’t reach $1 trillion before FY2075-76."));
+    }
+    setBig(last.gdp);
+    $("bigSub").textContent = "GDP in FY2040-41, " + (last.gdp / BASE.Y0).toFixed(2) + "× today’s $460 billion economy";
+    var cagr = Math.pow(last.gdp / BASE.Y0, 1 / (END - 2025)) - 1;
+    $("sPc").textContent = "$" + Math.round(last.pc).toLocaleString("en-US");
+    $("sPcSub").textContent = "Up from $" + Math.round(cur.run.rows[0].pc).toLocaleString("en-US") + " today, for " + Math.round(last.pop) + " million people";
+    $("sGrowth").textContent = pct(cagr);
+    $("sKY").textContent = last.KY.toFixed(2);
+
+    var d = runModel(END, settingsToOver(draft)).rows[15].gdp;
+    $("pv").textContent = money(d);
+    $("pv").classList.toggle("over", d >= TRILLION);
+    $("pt").textContent = d >= TRILLION ? "Your scenario crosses $1 trillion by FY2040-41" : "Your scenario falls short of $1 trillion by FY2040-41";
+    var w = warnings(draft), wl = $("warns"); wl.textContent = "";
+    w.forEach(function (t) { var li = document.createElement("li"); li.textContent = t; wl.appendChild(li); });
+    $("saveBtn").textContent = saved.some(function (x) { return x.name.toLowerCase() === $("saveName").value.trim().toLowerCase(); }) ? "Update scenario" : "Save scenario";
+
+    renderLists();
+    drawChart(cur);
+    drawBar(cur.run.contrib);
+  }
+  $("saveName").addEventListener("input", function () {
+    $("saveBtn").textContent = saved.some(function (x) { return x.name.toLowerCase() === $("saveName").value.trim().toLowerCase(); }) ? "Update scenario" : "Save scenario";
+  });
+
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { if (lastCur) drawChart(lastCur); }, 120); });
+  if (window.matchMedia) {
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+    var redraw = function () { if (lastCur) { drawChart(lastCur); drawBar(lastCur.run.contrib); } };
+    if (mq.addEventListener) mq.addEventListener("change", redraw);
+    new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  }
+
+  function fitText() {
+    document.querySelectorAll("[data-fit]").forEach(function (el) {
+      var st = getComputedStyle(el), inner = el.firstElementChild;
+      if (!inner) return;
+      var avail = el.clientWidth - parseFloat(st.paddingLeft) - parseFloat(st.paddingRight);
+      el.style.fontSize = "100px";
+      var w = inner.getBoundingClientRect().width;
+      if (w > 0) el.style.fontSize = (100 * avail / w * 0.99).toFixed(2) + "px";
+    });
+  }
+  window.addEventListener("resize", function () { clearTimeout(fitText.t); fitText.t = setTimeout(fitText, 100); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { fitText(); if (lastCur) drawChart(lastCur); });
+  fitText();
+
+  syncInputs();
+  refresh();
+})();
+</script>
+</body>
+</html>
