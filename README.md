@@ -4,13 +4,17 @@ A scenario projection of Bangladesh's GDP using the **World Bank Long-Term Growt
 
 **Short answer:** just. If productivity keeps growing at the pace of the last decade, GDP reaches about **$1,014bn by FY2040-41**, 2.2× today's $460bn. Depending only on productivity growth, the result lands anywhere between **$884bn and $1,338bn**.
 
+### 🌐 [Explore the interactive website →](https://anidpoka.github.io/Bangladesh-GDP-Growth/)
+
+Build your own scenario in the browser, no install needed.
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AniDPoka/Bangladesh-GDP-Growth/blob/main/notebooks/Bangladesh_GDP_Scenario_Visualiser_2040.ipynb)
 
 ## What's in this repository
 
 | Path | What it is |
 |---|---|
-| [`index.html`](index.html) | Interactive scenario explorer website (published with GitHub Pages) |
+| [`index.html`](index.html) | Interactive scenario explorer website, live at **[anidpoka.github.io/Bangladesh-GDP-Growth](https://anidpoka.github.io/Bangladesh-GDP-Growth/)** |
 | [`notebooks/Bangladesh_GDP_Scenario_Visualiser_2040.ipynb`](notebooks/Bangladesh_GDP_Scenario_Visualiser_2040.ipynb) | Python implementation: model engine, TFP derivation, validation, scenarios, growth decomposition, sensitivity analysis and an interactive explorer |
 | [`model/bangladesh_ltgm_model.xlsx`](model/bangladesh_ltgm_model.xlsx) | Excel implementation with live formulas: data sources, TFP derivation, the year-by-year model and a five-scenario comparison |
 | [`slides/Bangladesh_GDP_Projection_FY2040-41.pptx`](slides/Bangladesh_GDP_Projection_FY2040-41.pptx) | 11-slide presentation of the model and results ([PDF version](slides/Bangladesh_GDP_Projection_FY2040-41.pdf)) |
