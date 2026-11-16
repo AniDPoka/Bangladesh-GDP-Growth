@@ -10,7 +10,7 @@ A scenario projection of Bangladesh's GDP using the **World Bank Long-Term Growt
 
 | Path | What it is |
 |---|---|
-| [`index.html`](index.html) | Interactive scenario explorer website (published with GitHub Pages) |
+| [[`index.html`](index.html)](https://anidpoka.github.io/Bangladesh-GDP-Growth/) | Interactive scenario explorer website (published with GitHub Pages) |
 | [`notebooks/Bangladesh_GDP_Scenario_Visualiser_2040.ipynb`](notebooks/Bangladesh_GDP_Scenario_Visualiser_2040.ipynb) | Python implementation: model engine, TFP derivation, validation, scenarios, growth decomposition, sensitivity analysis and an interactive explorer |
 | [`model/bangladesh_ltgm_model.xlsx`](model/bangladesh_ltgm_model.xlsx) | Excel implementation with live formulas: data sources, TFP derivation, the year-by-year model and a five-scenario comparison |
 | [`slides/Bangladesh_GDP_Projection_FY2040-41.pptx`](slides/Bangladesh_GDP_Projection_FY2040-41.pptx) | 11-slide presentation of the model and results ([PDF version](slides/Bangladesh_GDP_Projection_FY2040-41.pdf)) |
